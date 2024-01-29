@@ -4,7 +4,7 @@ interface AppProps {
   title: string;
 }
 
-const App: FC = () => {
+const App: FC<AppProps> = () => {
   return <div>App</div>;
 };
 
