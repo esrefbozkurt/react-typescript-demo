@@ -1,5 +1,5 @@
-import { Name } from "../App";
 import { FC } from "react";
+import { Name } from "../App.types";
 
 interface UserProps {
   name: Name;
