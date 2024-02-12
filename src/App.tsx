@@ -1,11 +1,12 @@
 import axios from "axios";
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import User from "./components/User";
 import { AppProps, Users } from "./App.types";
 
 const App: FC<AppProps> = ({ title }) => {
   const [users, setUsers] = useState<Users[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [username, setUsername] = useState("");
 
   // useEffect(() => {
   //   const getUsers = async () => {
@@ -38,10 +39,16 @@ const App: FC<AppProps> = ({ title }) => {
     }
   };
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value);
+  };
+
   return (
     <div>
       <h1>{title}</h1>
       <button onClick={handleClick}>Show Users</button>
+      <input type="text" onChange={handleChange} />
+      <div>{username}</div>
       {isLoading && <p>Loading...</p>}
       <ul>
         {users.map(({ login, name, email }) => {
